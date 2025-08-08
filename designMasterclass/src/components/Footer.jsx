@@ -8,12 +8,11 @@ export default function Footer() {
   const navigate = useNavigate();
 
   function handleLogOut(){
-
-    axiosClient.post('/users/logout', {});
-    localStorage.removeItem("designMasterclass");
+    axiosClient.post('/users/logout', {}).finally(() => {
+    localStorage.clear();
     navigate('/login');
     setIsLoggedIn(false);
-  }
+  })}
   return (
     <footer className="footer">
 <img id="footerLogo" src={navBarLogo}/>

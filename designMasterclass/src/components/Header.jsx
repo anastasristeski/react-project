@@ -35,7 +35,7 @@ export default function NavBarHeader({ logo }) {
         {logo && <li>{logo}</li>}
       </ul>
       <div className="navbarLogo">
-        <img src={navBarLogo} className="navbar-img" />
+        <Link to="/"><img src={navBarLogo} className="navbar-img" /></Link>
       </div>
       <ul className="navbar-right">
         <li id="paid-courses-item">

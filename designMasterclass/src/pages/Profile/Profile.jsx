@@ -10,7 +10,7 @@ export default function Profile() {
   return (
     <main className="profile-main-container">
       <div className="profile-info">
-        <span>First name: {name}</span>
+        <span>First : {name}</span>
         <span>Last Name: {lastname}</span>
         <span>Username: {username}</span>
         <span>Email: {email}</span>

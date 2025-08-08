@@ -1,0 +1,55 @@
+.main-section-second-div {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 1rem;
+  margin-left: 300px;
+  margin-right: 150px;
+
+  .page-title-prop {
+    font-family: Oxygen;
+     color: #3c327b;
+    font-weight: 400;
+    font-size: 40px;
+    height: 60px;
+  }
+
+  .courses-title{
+    color: #3C327B;
+  }
+
+  .quizzes-titles{
+     color: #3C327B;
+  }
+
+  .buttons-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .buttons-row {
+    display: flex;
+    gap: 2rem;
+    font-size: 50px;
+    .illustrator-button {
+      background-color: #b97136;
+      border: 1px solid #fc9c4b;
+    }
+  }
+  .paid-courses-right-div {
+    padding-right: 30px;
+  }
+  button {
+    border-radius: 50px;
+    cursor: pointer;
+    width: 180px;
+    height: 38px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    border: none;
+    font-family: Oxygen;
+    background-color: #fc9c4b;
+    font-size: 20px;
+  }
+  
+}

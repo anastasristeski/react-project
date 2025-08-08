@@ -1,0 +1,80 @@
+//components
+
+
+@use "./navbar/navbar.scss";
+@use "./HomePageBanners/learn.scss";
+@use "./HomePageBanners/adobePhotoShop.scss";
+@use "./HomePageBanners/adobeIllustrator.scss";
+@use "./footer/footer.scss";
+@use "./Tutorials/tutorials.scss";
+@use "./searchbar/SearchBar.scss";
+@use "./PaidCourses/PaidCourses.scss";
+@use "./PaidCourses/PaidCoursesSection.scss";
+@use "./HomePageBanners/HomePageMain.scss";
+
+@use "./LogIn/Login.scss";
+@use "./PaidCourses/CoursesCardWrapper.scss";
+@use "./SignUp/signup.scss";
+@use "./PaidCourses/CoursesCard.scss";
+@use "./PaidCourses/CourseCard.scss";
+@use "./ProfilePage/profile.scss";
+@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&family=Patrick+Hand+SC&display=swap');
+
+//pages
+
+
+//Fonts
+@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300&family=Patrick+Hand+SC&display=swap');
+
+
+
+html,
+body,
+div,
+span,
+h1,
+h2,
+h3,
+p,
+a,
+small,
+input {
+
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow: 0;
+
+
+}
+* {
+  //outline: 1px solid red;
+  box-sizing:border-box;
+}
+html{
+  font-family: 'Oxygen';
+
+}
+
+// body{
+//   height: 100%;
+
+// }
+
+a{
+    text-decoration: none;
+}
+
+ol,
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+}
+
+input, textarea{
+    &:focus {
+      outline: none;
+    }
+}

@@ -1,0 +1,36 @@
+.navbar {
+    display: flex;
+     background-color: #3C327B;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    background-color: #3C327B;
+    width: 100%;
+    height: 70px;
+    margin: 0 auto;
+    color: #FFFFFF;
+    position:relative;
+    z-index: 10;
+    
+    .navbar-left,
+    .navbar-right{
+        list-style: none;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        gap: 28px;
+    }
+    .navbar-img{
+        width: 100%;
+        height: 58px;
+        top: 6px;
+        left: 700px;
+    }
+   
+    .navbar-left li,
+    .navbar-right li{
+       margin-right:25px;
+    }
+    
+}

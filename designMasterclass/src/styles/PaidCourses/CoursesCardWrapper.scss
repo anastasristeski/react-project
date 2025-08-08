@@ -1,0 +1,13 @@
+.card-wrapper-main-div{
+    display: flex;
+    align-items: center;
+    border-radius: 36px;
+    overflow: hidden;
+    background-color: white;
+    box-shadow: inset 0px 0px 16px 5px rgba(0, 0, 0, 0.24);
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 13px;
+    padding: 50px;
+    width: 100%;
+}

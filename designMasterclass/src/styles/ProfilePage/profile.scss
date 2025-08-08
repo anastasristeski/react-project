@@ -1,0 +1,41 @@
+.profile-main-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color: #F0DCCB;
+    .profile-info{
+        display:flex;
+        flex-direction: column;
+        margin-top: 120px;
+        margin-bottom: 120px;
+        gap: 10px;
+
+        span{
+            height: 60px;
+            border-radius: 50px;
+            width: 777px;
+            background-color: #6D659C;
+            display: flex;
+            align-items: center;
+            padding-left: 30px;
+            color: #FFFFFF;
+            font-weight: 400;
+            border: 2px solid #554F7A;
+            box-shadow: 0px 4px 4px 0px #00000040;
+        }
+    }
+    .saved-courses-title{
+        width: auto;
+        height: 38px;
+        font-size: 30x;
+        margin-left: 90px;
+         margin-top: 70px;
+        color: #554F7A;
+        align-self: flex-start;
+        font-weight: 400;
+
+    }
+
+}

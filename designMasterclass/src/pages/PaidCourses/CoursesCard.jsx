@@ -2,15 +2,16 @@ import { useState } from "react";
 
 import axiosClient from "../../api/axiosClient";
 
-export default function CoursesCard({ ...props }) {
-  const [savedButton, setSavedButton] = useState(true);
+export default function CoursesCard({variant,isSaved,onRemove, ...props }) {
+  const [savedButton, setSavedButton] = useState(isSaved);
+  const cardClass = variant === "search" ? "search-variant" : "courses-card-main-div";
   function handleSaveButton() {
-    const userId = localStorage.getItem("userId");
     const courseId = props.id;
-    if (savedButton) {
-      axiosClient.post(`/users/user-items/courses/${userId}/${courseId}`, {});
+    if (isSaved) {
+      axiosClient.post(`/courses/user/save-course/${courseId}`, {});
     } else {
-      axiosClient.delete(`/users/user-items/courses/${userId}/${courseId}`, {});
+      axiosClient.delete(`/courses/user/delete-course/${courseId}`, {});
+      onRemove(props.id);
     }
 
     setSavedButton(!savedButton);
@@ -38,7 +39,7 @@ export default function CoursesCard({ ...props }) {
     </svg>
   );
   return (
-    <div className="courses-card-main-div">
+    <div className={cardClass}>
       <img className="product-image" src={props.image} alt={props.id} />
       <div className="info-row">
         <span className="price">{props.price}</span>
@@ -49,9 +50,9 @@ export default function CoursesCard({ ...props }) {
         <span className="author">{props.author}</span>
         <div className="card-buttons">
           <button className="watch-button">Watch</button>
-          <button onClick={handleSaveButton} className="save-button">
+         {!variant &&<button onClick={handleSaveButton} className="save-button">
             {savedButton ? saveIcon : saveFilledIcon}
-          </button>
+          </button>}
         </div>
       </div>
     </div>

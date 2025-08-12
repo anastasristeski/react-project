@@ -1,4 +1,15 @@
-.info-row{
+.courses-card-main-div {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  border-radius: 38px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 16px 5px rgba(0, 0, 0, 0.2);
+  height: 87%;
+  width: 450px;
+
+  .info-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -6,49 +17,98 @@
     font-weight: 300;
     color: black;
     font-size: 17px;
-    .length{
-        margin-left: auto;
+    .length {
+      margin-left: auto;
     }
-}
-.course-card-title{
+  }
+  .course-card-title {
     font-family: Oxygen;
     font-size: 20px;
     font-weight: 700;
     padding-bottom: 30px;
-
-}
-.last-card-row{
+  }
+  .last-card-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
 
+    .card-buttons {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      .watch-button {
+        background-color: #fc9c4b;
+        border-radius: 50px;
+        border: none;
+        width: 80px;
+        height: 30px;
+        font-size: 16px;
+        font-family: Oxygen;
+        cursor: pointer;
+      }
+      .save-button {
+        border: none;
+        background-color: white;
+        margin-top: 5px;
+      }
+    }
+    .author {
+      font-size: 20px;
+    }
+  }
+}
 
-.card-buttons{
+// .search-variant, .courses-card-main-div {
+//   .save-button {
+//     border: none;
+//     background-color: white;
+//     margin-top: 5px;
+//   }
+// }
+
+.search-variant {
+  background-color: #f0dccb;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0px 0px 16px 5px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  justify-content: space-between;
+  .info-row {
     display: flex;
     align-items: center;
-    gap: 10px;
-    .watch-button{
-    background-color: #FC9C4B;
-    border-radius: 50px;
-    border:none;
-    width: 80px;
-    height: 30px;
+    justify-content: space-between;
+    font-size: 12px;
+  }
+  .course-card-title {
     font-size: 16px;
-    font-family: Oxygen;
-    cursor: pointer;
+    padding-bottom: 10px;
+  }
+  .last-card-row {
+     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .author {
+      font-size: 12px;
+    }
+  }
+  // .save-button {
+  //   background-color: #f0dccb;
+  // }
+ 
+      .watch-button {
+        background-color: #fc9c4b;
+        border-radius: 50px;
+        border: none;
+        width: 50px;
+        height: 30px;
+        font-size: 12px;
 
-
-}
-.save-button{
-    border: none;
-    background-color: white;
-    margin-top: 5px;
-    //padding-top: 20px;
-
-}
-}
-.author{
-    font-size:20px;
-}
+        font-family: Oxygen;
+        cursor: pointer;
+      }
+     
 
 }

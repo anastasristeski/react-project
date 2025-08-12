@@ -13,12 +13,11 @@ export default function NavBarHeader({ logo }) {
   
 
   function handleLogOut(){
-
-    axiosClient.post('/users/logout', {});
-    localStorage.removeItem("designMasterclass");
+    axiosClient.post('/users/logout', {}).finally(() => {
+    localStorage.clear();
     navigate('/login');
     setIsLoggedIn(false);
-  }
+  })}
   
   return (
     <header

@@ -4,7 +4,7 @@ import AuthContext from "./AuthContext";
 export  function AuthProvider({children}){
     const [isLoggedIn, setIsLoggedIn] =  useState(false);
     useEffect(()=>{
-            const token = localStorage.getItem('designMasterclass');
+            const token = localStorage.getItem('designMasterclassToken');
             if(token){
                 setIsLoggedIn(true);
             }else{

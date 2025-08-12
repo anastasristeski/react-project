@@ -12,20 +12,9 @@ const axiosClient = axios.create({
 
 axiosClient.interceptors.request.use(
   (config) => {
-    const raw = localStorage.getItem("designMasterclass");
-    let data;
+    const token = localStorage.getItem("designMasterclassToken");
 
-    try {
-      data = JSON.parse(raw || '{}');
 
-      if (typeof data === 'string') {
-        data = { token: data };
-      }
-    } catch {
-      data = { token: raw };
-    }
-
-    const token = data.token;
 
     if (token) {
       config.headers['Authorization'] = `Bearer ${token}`;

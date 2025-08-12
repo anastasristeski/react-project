@@ -2,6 +2,8 @@ import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axiosClient from "../../api/axiosClient";
 import AuthContext from "../../components/context/AuthContext";
+import logo from "../../assets/login-logo.png";
+
 
 export default function LogIn() {
   const [email, setEmail] = useState("");
@@ -16,15 +18,19 @@ export default function LogIn() {
       email: loginData.email,
       password: loginData.password,
     });
-    console.log(response);
-    if (response.status === 200) {
-      localStorage.setItem("designMasterclass", response.data.token);
-      localStorage.setItem("userId", response.data.userId);
 
-      localStorage.setItem("name", response.data.name);
-      localStorage.setItem("lastname", response.data.lastname);
-      localStorage.setItem("username", response.data.username);
-      localStorage.setItem("email", response.data.email);
+    console.log('response.data:' ,response.data);
+    if (response.status >=200 && response.status <300) {
+      localStorage.setItem("designMasterclassToken", response.data.token);
+      const userData = 
+        {
+          name: response.data.name,
+          lastname: response.data.lastname,
+          username: response.data.username,
+          email: response.data.email,
+        };
+        console.log(userData);
+      localStorage.setItem("designMasterclass_user", JSON.stringify(userData));
 
       setIsLoggedIn(true);
       navigate("/");
@@ -33,6 +39,8 @@ export default function LogIn() {
     }
   };
   return (
+      <div className="login-main-page">
+                  <img src = {logo} alt="digitalMasterClassLogo" className="logo-login"></img>
     <div className="log-in-content">
       <h1 className="log-in-title">Log In</h1>
 
@@ -63,6 +71,7 @@ export default function LogIn() {
         </div>
         <button className="login-button">Log In</button>
       </form>
+    </div>
     </div>
   );
 }

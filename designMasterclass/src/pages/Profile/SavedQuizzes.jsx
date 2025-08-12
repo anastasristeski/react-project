@@ -6,13 +6,9 @@ export default function SavedQuizzes() {
   const [quizzes, setSavedQuizzes] = useState([]);
   const fetchSavedQuizzes = async () => {
     try {
-      const userId = localStorage.getItem("userId");
-      const response = await axiosClient.get(
-        `/quizzes/${userId}/saved-quizzes`
-      );
-       console.log(response.data);
+      const response = await axiosClient.get(`/quizzes/saved-quizzes`);
+
       if (response.status === 200) {
-        console.log(response.data);
         setSavedQuizzes(response.data);
       }
     } catch (error) {
@@ -22,12 +18,14 @@ export default function SavedQuizzes() {
   useEffect(() => {
     fetchSavedQuizzes();
   }, []);
-
+const handleRemoveQuiz = (id) =>{
+  setSavedQuizzes((prevState)=>prevState.filter((quiz)=> quiz.id !== id));
+}
   return (
     <div className="last-section-main-div">
       <div className="card-wrapper-main-div">
         {quizzes.map((quiz, index) => (
-          <QuizCard key={index} {...quiz} />
+          <QuizCard key={index} {...quiz} onRemove = {handleRemoveQuiz} isSaved ={false} />
         ))}
       </div>
     </div>

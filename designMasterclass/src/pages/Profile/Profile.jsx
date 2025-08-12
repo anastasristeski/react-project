@@ -2,18 +2,16 @@ import SavedCourses from "./SavedCourses";
 import SavedQuizzes from "./SavedQuizzes";
 
 export default function Profile() {
-  const name = localStorage.getItem("name");
-  const lastname = localStorage.getItem("lastname");
-  const username = localStorage.getItem("username");
-  const email = localStorage.getItem("email");
+  const data = JSON.parse(localStorage.getItem("designMasterclass_user"));
+
 
   return (
     <main className="profile-main-container">
       <div className="profile-info">
-        <span>First : {name}</span>
-        <span>Last Name: {lastname}</span>
-        <span>Username: {username}</span>
-        <span>Email: {email}</span>
+        <span>First Name: {data.name}</span>
+        <span>Last Name: {data.lastname}</span>
+        <span>Username: {data.username}</span>
+        <span>Email: {data.email}</span>
       </div>
       <h1 className="saved-courses-title">Saved Courses</h1>
       <SavedCourses />

@@ -1,4 +1,10 @@
+import { useContext } from "react";
+import { Link } from "react-router-dom";
+import AuthContext from "../../components/context/AuthContext";
+
 export default function PaidCoursesSection({ pageTitle }) {
+  const {isLoggedIn} = useContext(AuthContext);
+  const pathToSaved = isLoggedIn ? "/profile" : "/login";
 
     const url = 'quizzes';
   return (
@@ -11,7 +17,7 @@ export default function PaidCoursesSection({ pageTitle }) {
           <button className="illustrator-button">Illustrator</button>
        </div>
       
-      <div className="paid-courses-right-div"><button>Saved</button></div>
+      {isLoggedIn &&(<Link to={pathToSaved}><div className="paid-courses-right-div"><button>Saved</button></div></Link>)}
     </div>
      </div>
   );

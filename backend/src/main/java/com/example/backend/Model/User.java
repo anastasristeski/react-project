@@ -1,15 +1,20 @@
 package com.example.backend.Model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Entity
+@AllArgsConstructor
+@Builder
 @Table (name="users")
-public class User {
+public class User implements UserDetails {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
@@ -18,19 +23,21 @@ public class User {
     private String username;
     private String email;
     private String password;
+    @Enumerated(EnumType.STRING)
+    private Role role;
     @ManyToMany
             @JoinTable(
                     name="user_saved_courses",
                     joinColumns = @JoinColumn(name="user_id"),
                     inverseJoinColumns = @JoinColumn(name ="course_id")
             )
-    private Set<Course> savedCourses;
+    private Set<Course> savedCourses= new HashSet<>();
     @ManyToMany
     @JoinTable(
             name="user_saved_quizzes",
             joinColumns = @JoinColumn(name="user_id"),
             inverseJoinColumns = @JoinColumn(name ="quiz_id"))
-   private Set<Quiz> savedQuizzes;
+   private Set<Quiz> savedQuizzes = new HashSet<>();
     public User(){}
     public User(String name, String lastname, String username, String email, String password) {
         this.name = name;
@@ -53,15 +60,49 @@ public class User {
     public String getLastname() {
         return lastname;
     }
-
+    @Override
     public String getUsername() {
+        return email;
+    }
+
+    public String getUserNickName() {
         return username;
     }
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;    }
 
     public String getEmail() {
         return email;
     }
 
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority(role.name()));
+    }
+
+    @Override
     public String getPassword() {
         return password;
     }
@@ -105,6 +146,7 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
 
     @Override
     public String toString() {

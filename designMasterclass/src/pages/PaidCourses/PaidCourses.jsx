@@ -5,10 +5,31 @@ import CoursesCard from "./CoursesCard";
 
 export default function PaidCourses() {
   const [courses, setCourses] = useState([]);
+  const [pagedCourses, setPagedCourses]=useState([]);
   const [query, setQuery] = useState("");
   const [debouncedQuery, setDebouncedQuery] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages]= useState(1);
+  const itemsPerPage = 10;
+  
 
-  const fetchCourses = async () => {
+  const fetchCoursesPaged = async (page) => {
+    console.log("fetchingcourses");
+    try {
+      const response = await axiosClient.get("/courses/paged",{params: {page, size: itemsPerPage}});
+      console.log(response);
+
+      if (response.status === 200) {
+        setPagedCourses(response.data.data);
+        setTotalPages(response.data.totalPages);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+
+ const fetchCourses = async () => {
     console.log("fetchingcourses");
     try {
       const response = await axiosClient.get("/courses");
@@ -21,20 +42,31 @@ export default function PaidCourses() {
       console.error(error);
     }
   };
-  useEffect(() => {
+
+  useEffect (()=>{
+    if(!query){
+      fetchCoursesPaged(currentPage);
+    }
+  },[currentPage, query]);
+
+    useEffect(() => {
     fetchCourses();
   }, []);
 
   useEffect(() => {
     const handler = setTimeout(() => {
       setDebouncedQuery(query);
+      setCurrentPage(1);
     }, 200);
     return () => clearTimeout(handler);
   }, [query]);
 
-  const filteredCourses = courses.filter((course) =>
+  const displayCourses =
+    debouncedQuery.length>0 ? 
+  courses.filter((course) =>
     course.title.toLowerCase().includes(query.toLocaleLowerCase())
-  );
+  ): pagedCourses;
+
   return (
     <main className="paid-courses-main">
       <div className="search-bar">
@@ -49,9 +81,18 @@ export default function PaidCourses() {
 
        <div className="last-section-main-div">
             <div className="card-wrapper-main-div">
-              {filteredCourses.map((course, index) => (
-                <CoursesCard key={index} {...course}isSaved ={true}/>
+              {displayCourses.map((course, index) => (
+                <CoursesCard key={index} {...course}isSaved ={true} variant="allCourses"/>
               ))}
+            </div>
+            <div className="pagination">
+                {[...Array(totalPages)].map((_,i)=>(
+                  <button  key={i}
+                    className={currentPage === i+1?"pageButton-active": "pageButton"}
+                    onClick={()=>setCurrentPage(i+1)}>
+                      {i+1}
+                  </button>
+                ))}
             </div>
           </div>
     </main>

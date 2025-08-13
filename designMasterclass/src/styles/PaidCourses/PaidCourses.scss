@@ -1,8 +1,27 @@
-.paid-courses-main{
-    background-color: #F0DCCB;
-
+.paid-courses-main {
+  background-color: #f0dccb;
 }
-.last-section-main-div{
-    padding: 1% 5%;
-    width: 100%;
+.last-section-main-div {
+  padding: 1% 5%;
+  width: 100%;
+  .pagination {
+    display: flex;
+    justify-content: end;
+    padding: 10px;
+    gap: 16px;
+    .pageButton {
+      border-radius: 50px;
+      border: 1.5px;
+      cursor: pointer;
+      box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.2);
+    }
+    .pageButton-active {
+      border-radius: 10px;
+      border: 1.5px;
+      box-shadow: 0px 0px 16px 5px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      transform: scale(1.2);
+      transition: all 0.2s ease-in-out;
+    }
+  }
 }

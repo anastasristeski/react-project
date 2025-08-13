@@ -2,18 +2,21 @@ import { useState } from "react";
 
 import axiosClient from "../../api/axiosClient";
 
-export default function CoursesCard({variant,isSaved,onRemove, ...props }) {
+export default function CoursesCard({ variant, isSaved, onRemove, ...props }) {
   const [savedButton, setSavedButton] = useState(isSaved);
-  const cardClass = variant === "search" ? "search-variant" : "courses-card-main-div";
+  const cardClass =
+    variant === "search" ? "search-variant" : "courses-card-main-div";
   function handleSaveButton() {
     const courseId = props.id;
+    if (variant === "savedCourses") {
+      onRemove(courseId);
+      return;
+    }
     if (isSaved) {
       axiosClient.post(`/courses/user/save-course/${courseId}`, {});
     } else {
       axiosClient.delete(`/courses/user/delete-course/${courseId}`, {});
-      onRemove(props.id);
     }
-
     setSavedButton(!savedButton);
   }
   const saveIcon = (
@@ -50,9 +53,11 @@ export default function CoursesCard({variant,isSaved,onRemove, ...props }) {
         <span className="author">{props.author}</span>
         <div className="card-buttons">
           <button className="watch-button">Watch</button>
-         {!variant &&<button onClick={handleSaveButton} className="save-button">
-            {savedButton ? saveIcon : saveFilledIcon}
-          </button>}
+          {variant !== "search" && (
+            <button onClick={handleSaveButton} className="save-button">
+              {savedButton ? saveIcon : saveFilledIcon}
+            </button>
+          )}
         </div>
       </div>
     </div>

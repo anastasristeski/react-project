@@ -6,12 +6,15 @@ export default function QuizCard({ variant, isSaved,onRemove ,...props }) {
   const cardClass = variant ==="search" ? "search-variant":"courses-card-main-div";
   function handleSaveButton() {
     const quizId = props.id;
+    if(variant==="savedQuizzes"){
+      onRemove(quizId);
+      return ;
+    }
     if(isSaved){
             axiosClient.post(`/quizzes/user/save-quiz/${quizId}`, {});
     }
     else{
             axiosClient.delete(`/quizzes/user/delete-quiz/${quizId}`, {});
-            onRemove(props.id);
     }
     setSavedButton(!savedButton);
   }
@@ -49,7 +52,7 @@ export default function QuizCard({ variant, isSaved,onRemove ,...props }) {
 
         <div className="card-buttons">
           <button className="watch-button">Watch</button>
-          {!variant && <button onClick={handleSaveButton} className="save-button">
+          {variant !=="search" && <button onClick={handleSaveButton} className="save-button">
             {savedButton ? saveIcon : saveFilledIcon}
           </button>}
         </div>

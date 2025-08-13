@@ -35,7 +35,7 @@ public class UserController {
 
     @PostMapping("/logout")
     public ResponseEntity<String> logout(HttpServletRequest httpServletRequest){
-        return ResponseEntity.ok("logged out");
+        return ResponseEntity.ok("Logged Out");
     }
 
     public User getCurrentUser(){

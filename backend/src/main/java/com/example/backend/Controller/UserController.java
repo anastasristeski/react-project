@@ -11,21 +11,17 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+
 
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
     private final UserRepository userRepository;
-    private final JwtUtil jwtUtil;
     private final AuthenticationService service;
 
-    public UserController(UserRepository userRepository, JwtUtil jwtUtil, AuthenticationService service) {
+    public UserController(UserRepository userRepository, AuthenticationService service) {
         this.userRepository = userRepository;
-        this.jwtUtil = jwtUtil;
         this.service = service;
     }
     @GetMapping

@@ -7,6 +7,7 @@ export default function InputField({ labelText, placeHolderText, isEmail , name}
         type={isEmail ? "email" : "text"}
         name={name}
         placeholder={placeHolderText}
+        {...name==="password" ? {type: "password"} : {}}
       />
     </div>
   );

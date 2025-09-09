@@ -67,5 +67,22 @@ DELETE /api/courses/user/delete-course/{courseId} → Remove course from saved l
 
 ---
 
-🖼️ Screenshots (Optional)
+🖼️ Screenshots
 
+<img width="1680" height="1050" alt="Screenshot 2025-09-09 at 12 57 49" src="https://github.com/user-attachments/assets/f533cc98-7491-43ec-8a20-97bf7fd83318" />
+
+<img width="1680" height="1050" alt="Screenshot 2025-09-09 at 12 51 07" src="https://github.com/user-attachments/assets/eb305891-ad06-413b-bf62-fe4cc7862d9a" />
+
+<img width="1680" height="1050" alt="Screenshot 2025-09-09 at 12 51 19" src="https://github.com/user-attachments/assets/05374de8-98b9-45ac-a015-8c2d2ae6a53c" />
+
+<img width="1680" height="1050" alt="Screenshot 2025-09-09 at 12 51 25" src="https://github.com/user-attachments/assets/981cf805-ea91-44d0-9916-091be4264eab" />
+
+<img width="1680" height="1050" alt="Screenshot 2025-09-09 at 12 51 47" src="https://github.com/user-attachments/assets/b4a99e4a-fc6c-4fee-bbf1-4d9a53bc73ad" />
+<img width="1680" height="1050" alt="Screenshot 2025-09-09 at 12 52 02" src="https://github.com/user-attachments/assets/bfda5669-f366-4838-a3d5-308bc3d05902" />
+
+<img width="1680" height="1050" alt="Screenshot 2025-09-09 at 12 52 02" src="https://github.com/user-attachments/assets/f5330145-8f1a-485b-ad91-a0f294faf64f" />
+
+<img width="1680" height="1050" alt="Screenshot 2025-09-09 at 12 52 25" src="https://github.com/user-attachments/assets/eab168f2-61de-462e-a6a7-7ae5b0f16b10" />
+<img width="1680" height="1050" alt="Screenshot 2025-09-09 at 12 52 55" src="https://github.com/user-attachments/assets/e28f04f9-6f9b-4c08-b024-4890d01f66d8" />
+
+<img width="1680" height="1050" alt="Screenshot 2025-09-09 at 12 53 03" src="https://github.com/user-attachments/assets/cea0a7ac-f9c2-4ad3-b8d6-e7eb6246360e" />
